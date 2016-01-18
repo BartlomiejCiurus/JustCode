@@ -19,4 +19,8 @@ public class ResolvedExerciseService {
         return resolvedExerciseRepository.save(resolvedExercise);
     }
 
+    public ResolvedExercise findResolvedExerciseById(Long userId, Long exerciseId){
+        return resolvedExerciseRepository.findResolvedExerciseById(userId, exerciseId);
+    }
+
 }
