@@ -62,7 +62,7 @@
                 <div class="form-row">
                     <label>
                         <span><spring:message code="points.title"/></span>
-                        <input style="width: 100% !important;" type="number" value="10" min="1" name="points">
+                        <input style="width: 100% !important;" type="number" value="10" min="1" max="50" name="points" required/>
                     </label>
                 </div>
 

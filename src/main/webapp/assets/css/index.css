@@ -101,7 +101,6 @@ ul#navigation li {
 ul#navigation li a:link, ul#navigation li a:visited {
     float: left;
     display: block;
-    width: auto;
     margin: 0px;
     padding: 25px 10px;
     text-decoration: none;
@@ -113,6 +112,13 @@ ul#navigation li a:link, ul#navigation li a:visited {
     border: none;
 }
 
+ul#navigation li a.dropdown{
+    width: 230px;
+}
+ul#navigation li.dropdownElement{
+    width: 230px;
+    margin-top: -6px;
+}
 ul#navigation li.current a:link, ul#navigation li.current a:visited {
     background: url(../images/nav_hover.png) repeat;
 }
