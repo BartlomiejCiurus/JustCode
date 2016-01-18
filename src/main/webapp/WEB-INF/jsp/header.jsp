@@ -25,7 +25,7 @@
         </li>
         <li><a href="<c:url value="/profile.html"/>"><spring:message code="profile.title"/></a></li>
         <li><a href="<c:url value="/ranking.html"/>">Ranking</a></li>
-        <li><a href="<c:url value="/contact"/>"><spring:message code="contact.title"/></a></li>
+        <li><a href="<c:url value="mailto:support@justcode.com"/>"><spring:message code="contact.title"/></a></li>
         <li><a href="<c:url value="/logout.html"/>"><spring:message code="logout.title"/></a></li>
     </ul>
 </div>

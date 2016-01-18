@@ -16,6 +16,31 @@
     <div id="secWrapper"
          style="margin-top: 15px; background: url(../images/content_top.png) no-repeat top left !important;">
         <div id="container" class="clearfix" style="min-height: 800px; font-size: 14px">
+            <% if (request.isUserInRole("ADMIN")) { %>
+            <form:form action="/deleteTutorial.html"  commandName="tutorialName" method="post" class="form-labels-on-top"
+                       style="box-shadow: none !important; padding: 0 0 0 0 !important; display: initial !important;">
+
+                <label>
+                    <input style="display: none" type="text" name="tutorialName" value="${tutorial.name}">
+                </label>
+
+                <div class="form-row" style="display: initial !important;">
+                    <button type="submit" style="background-color: #aa1111 !important;"><spring:message code="delete"/></button>
+                </div>
+
+            </form:form>
+            <form method="get" action="/editTutorial.html" class="form-labels-on-top"
+                       style="box-shadow: none !important; padding: 0 0 0 0 !important; display: initial !important;">
+                <label>
+                    <input style="display: none" type="text" name="tutorialName" value="${tutorial.name}">
+                </label>
+
+                <div class="form-row" style="display: initial !important;">
+                    <button type="submit"><spring:message code="edit"/></button>
+                </div>
+            </form>
+            <% } %>
+
             <form class="form-labels-on-top" style="box-shadow: none !important;">
 
                 <div class="form-title-row">

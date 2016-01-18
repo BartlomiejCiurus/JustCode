@@ -24,9 +24,10 @@ public interface TutorialRepository extends JpaRepository<Tutorial, Long> {
 
     @Modifying
     @Transactional
-    @Query("UPDATE Tutorial SET content = ?1, level = ?2, technology = ?3 where name = ?4")
+    @Query("UPDATE Tutorial SET content = ?1, level = ?2, technology = ?3 WHERE name = ?4")
     void updateTutorialInfo(String content, SupportedLevels level, SupportedTechnologies technology, String tutorialName);
 
+    @Modifying
     @Transactional
     @Query("DELETE Tutorial WHERE name = ?1")
     void deleteTutorialByName(String tutorialName);

@@ -38,5 +38,12 @@ public class TutorialService {
         return tutorialRepository.findTutorialByName(name);
     }
 
+    public void deleteTutorialByName(String tutorialName){
+        tutorialRepository.deleteTutorialByName(tutorialName);
+    }
+
+    public void updateTutorialInfo(String content, SupportedLevels level, SupportedTechnologies technology, String tutorialName){
+        tutorialRepository.updateTutorialInfo(content, level, technology, tutorialName);
+    }
 
 }
