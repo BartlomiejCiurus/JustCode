@@ -30,27 +30,47 @@
 
                 <div class="form-row">
                     <label>
-                        <span><spring:message code="points.title"/>: ${exercise.points}</span>
+                        <span><spring:message code="points.title"/>: </span>
+                            ${exercise.points}
                     </label>
                 </div>
 
                 <div class="form-row">
                     <label>
-                        <span><spring:message code="description.title"/></span>
+                        <span><spring:message code="description.title"/>:</span>
                             ${exercise.description}
                     </label>
                 </div>
 
-                <div class="form-row">
-                    <label>
-                        <span><spring:message code="solution.title"/></span>
+                <c:if test="${not empty resolvedExercise}">
+                    <div class="form-row">
+                        <label>
+                            <span><spring:message code="solution.title"/>:</span>
+                                ${resolvedExercise.solution}
+                        </label>
+                    </div>
+                </c:if>
+
+                <c:if test="${empty resolvedExercise}">
+                    <div class="form-row">
+                        <label>
+                            <span><spring:message code="solution.title"/></span>
                         <textarea style="width: 100% !important; resize: vertical; min-height: 300px"
                                   name="solution"></textarea>
-                    </label>
-                </div>
+                        </label>
+                    </div>
+                </c:if>
 
                 <div class="form-row">
-                    <button type="submit"><spring:message code="solved.message"/></button>
+                    <button type="submit"
+                            <c:if test="${not empty resolvedExercise}">
+                                disabled
+                            </c:if>
+                    >
+                        <c:if test="${not empty resolvedExercise}"><spring:message code="solved.already.message"/></c:if>
+                        <c:if test="${empty resolvedExercise}"><spring:message code="solved.message"/></c:if>
+
+                    </button>
                 </div>
             </form:form>
         </div>
