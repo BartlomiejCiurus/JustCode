@@ -21,12 +21,19 @@
 
                 <div class="form-title-row">
                     <h1><spring:message code="exercises.create"/></h1>
+                    <c:if test="${not empty errorMessage}">
+                        <h2 style="color: #aa1111">${errorMessage}</h2>
+                    </c:if>
                 </div>
 
                 <div class="form-row">
                     <label>
                         <span><spring:message code="exercises.name"/></span>
-                        <input style="width: 100% !important;" type="text" name="name">
+                        <input
+                            <c:if test="${not empty exercise and not empty exercise.name}">
+                                value="${exercise.name}"
+                            </c:if>
+                                style="width: 100% !important;" type="text" name="name">
                     </label>
                 </div>
 
@@ -55,7 +62,7 @@
                 <div class="form-row">
                     <label>
                         <span><spring:message code="points.title"/></span>
-                        <input style="width: 100% !important;" type="number" name="points">
+                        <input style="width: 100% !important;" type="number" value="10" min="1" name="points">
                     </label>
                 </div>
 
@@ -65,12 +72,15 @@
                     </label>
                 </div>
 
-                <label for="content"></label>
-                <textarea cols="80" rows="10" id="content" name="content">
+                <label for="description"></label>
+                <textarea cols="80" rows="10" id="description" name="description">
+                    <c:if test="${not empty exercise and not empty exercise.description}">
+                        ${exercise.description}
+                    </c:if>
                 </textarea>
 
                 <script type="text/javascript">
-                    CKEDITOR.replace('content');
+                    CKEDITOR.replace('description');
                 </script>
 
                 <div class="form-row">

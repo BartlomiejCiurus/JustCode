@@ -18,6 +18,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Modifying
     @Transactional
-    @Query("UPDATE User SET points = ?2 WHERE id = ?1")
+    @Query("UPDATE User SET points = points + ?2 WHERE id = ?1")
     void updateUsersPoints(Long id, int points);
 }

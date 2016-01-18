@@ -10,7 +10,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 
-public class RegisterValidator implements FormValidator {
+public class RegisterValidator {
 
     public static final String ERRORS_PASSWORD_SHORT = "errors.password.short";
     public static final String ERRORS_FIELDS_EMPTY = "errors.fields.empty";
@@ -27,72 +27,87 @@ public class RegisterValidator implements FormValidator {
     private UserService userService;
 
     private ValidateResult validateResult;
+    private RegisterData registerData;
     private Locale locale;
 
-    public ValidateResult validate(PostData postData, Locale locale) {
-        RegisterData registerData = (RegisterData) postData;
+    public ValidateResult validate() {
         validateResult = new ValidateResult();
-        this.locale = locale;
 
-        validateIsPasswordNotTooShort(registerData.getPassword());
-        validateArePasswordsSameAndNotEmpty(registerData.getPassword(), registerData.getRepeatedPassword());
-        validateIsEmailUsed(registerData.getEmail());
-        validateIsUsernameUsed(registerData.getUsername());
-        validateAreFieldsNotEmpty(registerData);
+        validateIsPasswordNotTooShort();
+        validateArePasswordsSameAndNotEmpty();
+        validateIsEmailUsed();
+        validateIsUsernameUsed();
+        validateAreFieldsNotEmpty();
 
         return validateResult;
     }
 
-    private void validateIsUsernameUsed(String username) {
-        if (StringUtils.isBlank(username)) {
+    private void validateIsUsernameUsed() {
+        if (StringUtils.isBlank(registerData.getUsername())) {
             validateResult.setIsValid(false);
             validateResult.setMessage(messageSource.getMessage(USERNAME_EMPTY_ERROR, null, locale));
         }
 
-        if (userService.getUserByName(username) != null) {
+        if (userService.getUserByName(registerData.getUsername()) != null) {
             validateResult.setIsValid(false);
             validateResult.setMessage(messageSource.getMessage(USERNAME_ALREADY_TAKEN_ERROR, null, locale));
         }
     }
 
-    private void validateIsEmailUsed(String email) {
-        if (StringUtils.isBlank(email)) {
+    private void validateIsEmailUsed() {
+        if (StringUtils.isBlank(registerData.getEmail())) {
             validateResult.setIsValid(false);
             validateResult.setMessage(messageSource.getMessage(EMAIL_EMPTY_ERROR, null, locale));
         }
 
-        if (userService.getUserByEmail(email) != null) {
+        if (userService.getUserByEmail(registerData.getEmail()) != null) {
             validateResult.setIsValid(false);
             validateResult.setMessage(messageSource.getMessage(EMAIL_ALREADY_IN_USE, null, locale));
         }
 
     }
 
-    private void validateArePasswordsSameAndNotEmpty(String password, String repeatedPassword) {
-        if (StringUtils.isBlank(password) || StringUtils.isBlank(repeatedPassword)) {
+    private void validateArePasswordsSameAndNotEmpty() {
+        if (StringUtils.isBlank(registerData.getPassword()) || StringUtils.isBlank(registerData.getRepeatedPassword())) {
             validateResult.setIsValid(false);
             validateResult.setMessage(messageSource.getMessage(PASSWORD_EMPTY_ERROR, null, locale));
         }
 
-        if (!password.equals(repeatedPassword)) {
+        if (!registerData.getPassword().equals(registerData.getRepeatedPassword())) {
             validateResult.setIsValid(false);
             validateResult.setMessage(messageSource.getMessage(PASSWORD_ARE_NOT_THE_SAME_ERROR, null, locale));
         }
     }
 
-    private void validateIsPasswordNotTooShort(String password) {
-        if (password.length() < 6) {
+    private void validateIsPasswordNotTooShort() {
+        if (registerData.getPassword().length() < 6) {
             validateResult.setIsValid(false);
             validateResult.setMessage(messageSource.getMessage(ERRORS_PASSWORD_SHORT, null, locale));
         }
     }
 
-    private void validateAreFieldsNotEmpty(RegisterData registerData) {
+    private void validateAreFieldsNotEmpty() {
         if (StringUtils.isBlank(registerData.getEmail()) || StringUtils.isBlank(registerData.getEmail())
                 || StringUtils.isBlank(registerData.getEmail()) || StringUtils.isBlank(registerData.getEmail())) {
             validateResult.setIsValid(false);
             validateResult.setMessage(messageSource.getMessage(ERRORS_FIELDS_EMPTY, null, locale));
         }
 
+    }
+
+    public RegisterData getRegisterData() {
+        return registerData;
+    }
+
+    public void setRegisterData(RegisterData registerData) {
+        this.registerData = registerData;
+    }
+
+    public Locale getLocale() {
+        return locale;
+    }
+
+    public void setLocale(Locale locale) {
+        this.locale = locale;
     }
 }

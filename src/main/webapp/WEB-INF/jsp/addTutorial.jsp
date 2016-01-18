@@ -21,12 +21,19 @@
 
                 <div class="form-title-row">
                     <h1><spring:message code="tutorials.create"/></h1>
+                    <c:if test="${not empty errorMessage}">
+                        <h2 style="color: #aa1111">${errorMessage}</h2>
+                    </c:if>
                 </div>
 
                 <div class="form-row">
                     <label>
                         <span><spring:message code="tutorials.name"/></span>
-                        <input style="width: 100% !important;" type="text" name="name">
+                        <input
+                            <c:if test="${not empty tutorial and not empty tutorial.name}">
+                                    value="${tutorial.name}"
+                            </c:if>
+                                style="width: 100% !important;" type="text" name="name">
                     </label>
                 </div>
 
@@ -60,6 +67,9 @@
 
                 <label for="content"></label>
                 <textarea cols="80" rows="10" id="content" name="content">
+                    <c:if test="${not empty tutorial and not empty tutorial.content}">
+                        ${tutorial.content}
+                    </c:if>
                 </textarea>
 
                 <script type="text/javascript">

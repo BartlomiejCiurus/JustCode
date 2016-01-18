@@ -18,8 +18,16 @@
         <c:if test="${not empty errorMessageContent}">
             <span style="display: flex" class="errorBlock">${errorMessageContent}</span>
         </c:if>
-        <input type="text"  placeholder="<spring:message code="placeholder.username"/>" name="username"/>
-        <input type="email"  placeholder="<spring:message code="placeholder.email"/>" name="email"/>
+        <input type="text"
+                <c:if test="${not empty registerData and not empty registerData.username}">
+                    value="${registerData.username}"
+                </c:if>
+               placeholder="<spring:message code="placeholder.username"/>" name="username"/>
+        <input type="email"
+                <c:if test="${not empty registerData and not empty registerData.email}">
+                    value="${registerData.email}"
+                </c:if>
+               placeholder="<spring:message code="placeholder.email"/>" name="email"/>
         <input type="password" placeholder="<spring:message code="placeholder.password"/>" name="password"/>
         <input type="password" placeholder="<spring:message code="placeholder.password.repeat"/>" name="repeatedPassword"/>
         <input type="submit" value="<spring:message code="placeholder.signup"/>" class="loginBut"/>

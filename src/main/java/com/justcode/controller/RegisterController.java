@@ -4,7 +4,7 @@ import com.justcode.model.User;
 import com.justcode.model.UserRole;
 import com.justcode.service.UserService;
 import com.justcode.support.data.RegisterData;
-import com.justcode.support.validator.FormValidator;
+import com.justcode.support.validator.RegisterValidator;
 import com.justcode.support.validator.ValidateResult;
 import java.util.Collections;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +21,7 @@ import org.springframework.web.servlet.support.RequestContextUtils;
 public class RegisterController {
 
     @Autowired
-    private FormValidator registerValidator;
+    private RegisterValidator registerValidator;
     @Autowired
     private UserService userService;
 
@@ -30,10 +30,13 @@ public class RegisterController {
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String validateUserRegister(@ModelAttribute RegisterData registerData, HttpServletRequest request,
         ModelMap modelMap) {
-        ValidateResult validateResult = registerValidator.validate(registerData, RequestContextUtils.getLocale(request));
+        registerValidator.setRegisterData(registerData);
+        registerValidator.setLocale(RequestContextUtils.getLocale(request));
+        ValidateResult validateResult = registerValidator.validate();
 
         if (!validateResult.isValid()) {
             modelMap.put("errorMessageContent", validateResult.getMessage());
+            modelMap.put("registerData", registerData);
             return "register";
         }
 

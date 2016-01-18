@@ -36,7 +36,7 @@ public class SolvedExerciseController {
         resolvedExercise.setExercise(exercise);
 
         resolvedExerciseService.save(resolvedExercise);
-        userService.updateUserPoints(user.getId(), user.getPoints() + exercise.getPoints());
+        userService.updateUserPoints(user.getId(), exercise.getPoints());
 
         return "home";
     }
