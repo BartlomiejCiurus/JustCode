@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="JustCode:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="JustCode.war">
+      <element id="artifact" artifact-name="JustCode:war exploded" />
+    </root>
+  </artifact>
+</component>

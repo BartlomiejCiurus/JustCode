@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/main/webapp/assets/ckeditor/CHANGES.md" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/assets/ckeditor/LICENSE.md" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/assets/ckeditor/README.md" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/assets/ckeditor/adapters" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/assets/ckeditor/build-config.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/assets/ckeditor/ckeditor.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/assets/ckeditor/config.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/assets/ckeditor/contents.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/assets/ckeditor/lang" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/assets/ckeditor/plugins" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/assets/ckeditor/samples" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/assets/ckeditor/skins" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/assets/ckeditor/styles.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/assets/css/login.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/assets/css/main.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/assets/css/style.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/assets/images/loginBackground.jpg" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>
