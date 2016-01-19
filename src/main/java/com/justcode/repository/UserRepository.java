@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Repository("userRepository")
 public interface UserRepository extends JpaRepository<User, Long> {
 
@@ -20,4 +22,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Transactional
     @Query("UPDATE User SET points = points + ?2 WHERE id = ?1")
     void updateUsersPoints(Long id, int points);
+
+    @Query("FROM User ORDER BY points DESC ")
+    List<User> getRanking();
 }

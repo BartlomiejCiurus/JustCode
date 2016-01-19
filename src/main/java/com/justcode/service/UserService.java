@@ -35,4 +35,8 @@ public class UserService {
     public void updateUserPoints(Long id, int points) {
         userRepository.updateUsersPoints(id, points);
     }
+
+    public List<User> getRanking() {
+        return userRepository.getRanking();
+    }
 }
