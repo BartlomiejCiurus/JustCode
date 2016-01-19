@@ -1,6 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<div id="footer">
+<div id="footer" style="float: none !important;">
     <ul>
         <li><a href="<c:url value="/home.html?lang=pl"/>"><img width="50" src="../../assets/images/poland.png"/></a></li>
         <li><a href="<c:url value="/home.html?lang=en"/>"><img width="50" src="../../assets/images/united_states.png"/></a></li>

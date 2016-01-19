@@ -31,4 +31,7 @@ public interface TutorialRepository extends JpaRepository<Tutorial, Long> {
     @Transactional
     @Query("DELETE Tutorial WHERE name = ?1")
     void deleteTutorialByName(String tutorialName);
+
+    @Query("SELECT count(*) FROM Tutorial WHERE author.username = ?1")
+    Long countNumberOfTutorialsByUsername(String username);
 }

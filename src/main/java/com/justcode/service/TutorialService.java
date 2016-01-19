@@ -46,4 +46,8 @@ public class TutorialService {
         tutorialRepository.updateTutorialInfo(content, level, technology, tutorialName);
     }
 
+    public Long countNumberOfTutorialsByUsername(String username){
+        return tutorialRepository.countNumberOfTutorialsByUsername(username);
+    }
+
 }

@@ -17,4 +17,8 @@ public interface ExerciseRepository extends JpaRepository<Exercise, Long> {
 
     @Query("SELECT exercise from Exercise exercise where exercise.name = ?1")
     Exercise findExerciseByName(String name);
+
+    @Query("SELECT count(*) FROM Exercise WHERE author.username = ?1")
+    Long countNumberOfExercisesByUsername(String username);
+
 }

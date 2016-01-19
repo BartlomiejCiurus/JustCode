@@ -38,4 +38,8 @@ public class ExerciseService {
         return exerciseRepository.findExerciseByName(name);
     }
 
+    public Long countNumberOfExercisesByUsername(String username){
+        return exerciseRepository.countNumberOfExercisesByUsername(username);
+    }
+
 }
