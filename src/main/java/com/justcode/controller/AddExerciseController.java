@@ -21,6 +21,8 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class AddExerciseController {
 
+    public static final String EXERCISE_ADDED_MESSAGE_KEY = "exercise.add.done";
+
     @Autowired
     private ExerciseService exerciseService;
 
@@ -55,6 +57,8 @@ public class AddExerciseController {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         exercise.setAuthor(userService.getUserByName(username));
         exerciseService.save(exercise);
+
+        modelMap.put("message", EXERCISE_ADDED_MESSAGE_KEY);
 
         return "home";
     }

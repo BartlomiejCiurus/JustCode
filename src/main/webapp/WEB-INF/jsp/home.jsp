@@ -1,3 +1,4 @@
+<%@ page import="org.springframework.security.core.context.SecurityContextHolder" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -11,8 +12,17 @@
 <body>
 <%@include file="header.jsp" %>
 <div id="welcomeMessage">
-    <h1><spring:message code="welcome.message"/> <span style="color: #006eab">${user}</span>!</h1>
-
+    <c:if test="${not empty message}">
+        <span style="color: #00C853; font-size: 35px"> <spring:message code="${message}"/></span>
+    </c:if>
+    <c:if test="${empty message}">
+    <h1><spring:message code="welcome.message"/> <span
+            style="color: #006eab"> <%= SecurityContextHolder.getContext().getAuthentication().getName() %></span>!
+        <c:if test="${not empty usersNumber}">
+            <spring:message code="users.number" arguments="${usersNumber}"/>
+        </c:if>
+    </h1>
+    </c:if>
     <p><span>JustCode.com </span><spring:message code="page.description"/></p>
 
     <p>Lorem ipsum dolor sit amet, consectetur adip, <span>JustCode.com</span> amet dui gravida pulvinar lacinia, diam

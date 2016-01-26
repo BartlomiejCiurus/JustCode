@@ -21,6 +21,8 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class AddTutorialController {
 
+    public static final String TUTORIAL_ADDED_MESSAGE_KEY = "tutorial.add.done";
+
     @Autowired
     private TutorialService tutorialService;
 
@@ -55,6 +57,8 @@ public class AddTutorialController {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         tutorial.setAuthor(userService.getUserByName(username));
         tutorialService.save(tutorial);
+
+        modelMap.put("message", TUTORIAL_ADDED_MESSAGE_KEY);
 
         return "home";
     }

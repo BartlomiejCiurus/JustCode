@@ -10,19 +10,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" type="text/css" href="../../assets/css/index.css"/>
     <link rel="stylesheet" type="text/css" href="../../assets/css/form-labels-on-top.css"/>
-    <!-- CSS  -->
     <link href="../../assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <!-- Font Awesome -->
     <link href="../../assets/css/font-awesome.css" rel="stylesheet">
-    <!-- Skill Progress Bar -->
     <link href="../../assets/css/pro-bars.css" rel="stylesheet" type="text/css" media="all"/>
-    <!-- Owl Carousel -->
-    <!-- Default Theme CSS File-->
     <link id="switcher" href="../../assets/css/themes/default-theme.css" type="text/css" rel="stylesheet"
           media="screen,projection"/>
-    <!-- Main css File -->
     <link href="../../assets/css/profileStyle.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <!-- Font -->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script type="text/javascript" src="../../assets/ckeditor/ckeditor.js"></script>
 </head>
@@ -61,11 +54,22 @@
                                                          class="personal-information col s12 m12 l6">
                                                         <h3><spring:message code="information"/></h3>
                                                         <ul>
-                                                            <li><span><spring:message code="placeholder.username"/>: </span>${user.username} </li>
-                                                            <li><span><spring:message code="placeholder.email"/>: </span>${user.email}</li>
-                                                            <li><span><spring:message code="points.title"/>: </span>${user.points}</li>
-                                                            <li><span><spring:message code="tutorials.added"/>: </span>${tutorialsCreated}</li>
-                                                            <li><span><spring:message code="exercises.added"/>: </span>${exercisesCreated}</li>
+                                                            <li><span><spring:message
+                                                                    code="placeholder.username"/>: </span>${user.username}
+                                                            </li>
+                                                            <li><span><spring:message
+                                                                    code="placeholder.email"/>: </span>${user.email}
+                                                            </li>
+                                                            <li><span><spring:message
+                                                                    code="points.title"/>: </span>${user.points}</li>
+                                                            <li><span><spring:message
+                                                                    code="tutorials.added"/>: </span><a
+                                                                    href="<c:url value="/searchTutorialBy.html?username=${user.username}"/>"> ${tutorialsCreated}</a>
+                                                            </li>
+                                                            <li><span><spring:message
+                                                                    code="exercises.added"/>: </span><a
+                                                                    href="<c:url value="/searchExerciseBy.html?username=${user.username}"/>"> ${exercisesCreated}</a>
+                                                            </li>
                                                         </ul>
                                                     </div>
                                                 </div>
